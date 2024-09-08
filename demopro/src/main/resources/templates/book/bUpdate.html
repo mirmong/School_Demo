@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>책 수정하기</title>
+</head>
+<body>
+	<h3 th:text="[책수정]-bUpdate.html"> ??? </h3>
+	<a href="/"> => 처음으로</a>
+	<hr>
+	<h1>책 수정하기</h1>
+	<form method="POST" th:action="@{/bUpdate/{id}(id=${book.bookId})}">
+		<div>
+			<label>Book ID : </label>
+			<span th:text="${book.bookId}"></span>
+			<input type="hidden" th:field="*{book.bookId}">
+		</div>
+		<div>
+			<label>제 목 : </label>
+			<input type="text" th:field="*{book.title}">
+		</div>
+		<div>
+			<label>저 자 : </label>
+			<input type="text" th:field="*{book.author}">
+		</div>
+		<div>
+			<label>가 격 : </label>
+			<input type="text" th:field="*{book.price}">
+		</div>
+		<div>
+			<label>읽은 날 : </label>
+			<input type="text" th:field="*{book.ReadDateTime}">
+		</div>
+		<div>
+			<br>
+			<input type="submit" id="updateBook" value="변경내용 저장">
+			<input type="reset" id="resetBook" value="초기화">
+			<input type="button" value="취소" onclick="history.back();">
+		</div>
+	</form>
+	<p><br></p>
+	<p><a href="/bList">책 목록보기</a></p>
+</body>
+</html>

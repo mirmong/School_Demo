@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>책 상세보기</title>
+</head>
+<body>
+	<h3 th:text="[책상세]-bRead.html"> ??? </h3>
+	<a href="/"> => 처음으로</a>
+	<hr>
+	<h1>책 상세보기</h1>
+	
+	<div>
+		<span>Book ID : </span>
+		<span th:text="${book.bookId}"></span>
+	</div>
+	<div>
+		<span>제 목 : </span>
+		<span th:text="${book.title}"></span>
+	</div>
+	<div>
+		<span>저 자 : </span>
+		<span th:text="${book.author}"></span>
+	</div>
+	<div>
+		<span>가 격 : </span>
+		<span th:text="${book.price}"></span>
+	</div>
+	<div>
+		<span>읽은 날 : </span>
+		<span th:text="${#temporals.format(book.readDateTime, 'yyyy-MM-dd HH:mm:ss')}"></span>
+	</div>
+	<br>
+	<div>
+		<a th:href="@{/bUpdate/{id}(id=${book.bookId})}">수정</a>
+		<a th:href="@{/bDelete/{id}(id=${book.bookId})}">삭제</a>
+	</div>
+	<p><br></p>
+	<p><a href="/bList">책 목록보기</a></p>
+</body>
+</html>

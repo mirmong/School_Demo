@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>책 목록 보기</title>
+</head>
+<body>
+<h3 th:text="[책목록]-bList.html"> ??? </h3>
+<a href="/"> => 처음으로</a>
+<hr>
+<h1>책 목록보기</h1>
+
+	<table border="1" width="400" height="300">
+		<tr>
+			<th> Book ID </th>
+			<th> 제목(Title) </th>
+			<th> Action </th>
+		</tr>
+		<tr th:each ="book : ${allBooks}" >
+			<td align="center"><a th:href="@{/bRead/{id}(id=${book.bookId})}" th:text="${book.bookId}"></a></td>
+			<td align="center" th:text="${book.title}"></td>
+			<td align="center">
+				<a th:href="@{/bUpdate/{id}(id=${book.bookId})}">수정</a>	 /
+				<a th:href="@{/bDelete/{id}(id=${book.bookId})}">삭제</a>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
